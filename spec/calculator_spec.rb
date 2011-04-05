@@ -130,5 +130,11 @@ describe Calculator do
         e.message.should == 'negatives not allowed: -2,-4'
       }
     end
+
+    it 'should not accept delimiters except commas and newlines by default' do
+      lambda {
+        Calculator.new("1;2").diff
+      }.should raise_exception
+    end
   end
 end
