@@ -91,5 +91,34 @@ describe Calculator do
         Calculator.new('').diff
       }.should raise_exception
     end
+
+    it 'should throw an exception for consecutive delimiters' do
+      lambda {
+        Calculator.new("1,\n2").diff
+      }.should raise_exception
+      lambda {
+        Calculator.new("1\n,2").diff
+      }.should raise_exception
+    end
+
+    it 'should throw an exception for negative numbers' do
+      lambda {
+        Calculator.new('-1').diff
+      }.should raise_exception
+    end
+
+    it 'should list negative numbers in thrown exception' do
+      lambda {
+        Calculator.new('-1').diff
+      }.should raise_exception(IllFormedExpressionError, "negatives not allowed: -1")
+    end
+
+    it 'should list all negative numbers in thrown exception' do
+      lambda {
+        Calculator.new("1,-2\n3,-4").diff
+      }.should raise_exception { |e|
+        e.message.should == 'negatives not allowed: -2,-4'
+      }
+    end
   end
 end
