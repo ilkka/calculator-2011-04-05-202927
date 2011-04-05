@@ -66,5 +66,13 @@ describe Calculator do
         Calculator.new('-1').add
       }.should raise_exception(IllFormedExpressionError, "negatives not allowed: -1")
     end
+
+    it 'should list all negative numbers in thrown exception' do
+      lambda {
+        Calculator.new("1,-2\n3,-4").add
+      }.should raise_exception { |e|
+        e.message.should == 'negatives not allowed: -2,-4'
+      }
+    end
   end
 end
