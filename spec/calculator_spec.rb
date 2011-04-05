@@ -15,4 +15,11 @@ describe Calculator do
       }.should_not raise_exception
     end
   end
+
+  describe "expr" do
+    it "should return the expression passed in to the initializer" do
+      c = Calculator.new '1,2'
+      c.expr.should == '1,2'
+    end
+  end
 end
