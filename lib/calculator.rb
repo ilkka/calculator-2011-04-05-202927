@@ -6,6 +6,10 @@ class Calculator
   end
 
   def add
-    return 0 if @expr.empty?
+    if @expr.empty?
+      return 0
+    else
+      return @expr.to_i
+    end
   end
 end
