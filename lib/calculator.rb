@@ -37,6 +37,7 @@ class Calculator
     (expr,delims) = split_off_custom_delims
     nums = expr.split(delims).map { |part|
       raise IllFormedExpressionError, 'multiple consecutive delimiters not allowed' if part.empty?
+      raise IllFormedExpressionError, "found something not a number: #{part}" unless part =~ /^-?[0-9]+$/
       part.to_i
     }
     negatives = nums.select {|n| n < 0}
