@@ -40,5 +40,9 @@ describe Calculator do
       Calculator.new('1,2,3').add.should == 6
       Calculator.new('1,2,5,8').add.should == 16
     end
+
+    it 'should accept newlines for delimiters' do
+      Calculator.new("1\n2\n3").add.should == 6
+    end
   end
 end
