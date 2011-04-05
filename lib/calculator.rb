@@ -20,8 +20,20 @@ class Calculator
 
   private
 
+  def default_delims
+    /[,\n]/
+  end
+
   def expr_to_numbers
-    nums = @expr.split(/[,\n]/).map { |part|
+    (first,rest) = @expr.split("\n", 2)
+    if first =~ /^\/\/\[(.)\]$/
+      delims = %r{[#{Regexp.last_match(1)}\n]}
+      str = rest
+    else
+      delims = default_delims
+      str = [first, rest].select { |s| s.class == String }.join "\n"
+    end
+    nums = str.split(delims).map { |part|
       raise IllFormedExpressionError, 'multiple consecutive delimiters not allowed' if part.empty?
       part.to_i
     }
@@ -29,5 +41,4 @@ class Calculator
     raise IllFormedExpressionError, "negatives not allowed: #{negatives.join ','}" unless negatives.empty?
     return nums
   end
-
 end
