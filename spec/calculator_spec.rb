@@ -58,7 +58,7 @@ describe Calculator do
     it 'should throw an exception for negative numbers' do
       lambda {
         Calculator.new('-1').add
-      }.should raise_exception(IllFormedExpressionError, "negatives not allowed")
+      }.should raise_exception(IllFormedExpressionError, "negatives not allowed: -1")
     end
   end
 end
