@@ -76,7 +76,7 @@ describe Calculator do
     end
 
     it 'should accept custom delimiters on the first line' do
-      Calculator.new("//;\n1;2").add.should == 3
+      Calculator.new("//[;]\n1;2").add.should == 3
     end
   end
 
