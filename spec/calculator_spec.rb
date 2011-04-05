@@ -74,6 +74,10 @@ describe Calculator do
         e.message.should == 'negatives not allowed: -2,-4'
       }
     end
+
+    it 'should accept custom delimiters on the first line' do
+      Calculator.new("//;\n1;2").add.should == 3
+    end
   end
 
   describe 'diff' do
