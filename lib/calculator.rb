@@ -9,7 +9,9 @@ class Calculator
     if @expr.empty?
       return 0
     else
-      return @expr.to_i
+      @expr.split(',').inject(0) do |sum,part|
+        sum += part.to_i
+      end
     end
   end
 end
