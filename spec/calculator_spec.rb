@@ -27,5 +27,9 @@ describe Calculator do
     it 'should return zero for an empty string' do
       Calculator.new('').add.should == 0
     end
+
+    it 'should return the number in the string for a single number' do
+      Calculator.new('42').add.should == 42
+    end
   end
 end
