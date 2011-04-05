@@ -81,7 +81,7 @@ describe Calculator do
 
     it 'should not accept delimiters except commas and newlines by default' do
       lambda {
-        Calculator.new("1;2")
+        Calculator.new("1;2").add
       }.should raise_exception
     end
   end
