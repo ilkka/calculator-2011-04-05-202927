@@ -10,7 +10,7 @@ class Calculator
 
   def add
     @expr.split(/[,\n]/).inject(0) do |sum,part|
-      raise IllFormedExpressionError if part.empty?
+      raise IllFormedExpressionError, 'multiple consecutive delimiters not allowed' if part.empty?
       raise IllFormedExpressionError, 'negatives not allowed' if part.chomp[0] == '-'
       sum += part.to_i
     end
