@@ -6,7 +6,7 @@ class Calculator
   end
 
   def add
-    @expr.split(',').inject(0) do |sum,part|
+    @expr.split(/[,\n]/).inject(0) do |sum,part|
       sum += part.to_i
     end
   end
