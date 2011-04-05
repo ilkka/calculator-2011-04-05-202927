@@ -45,5 +45,14 @@ describe Calculator do
       Calculator.new("1\n2\n3").add.should == 6
       Calculator.new("2,3\n4").add.should == 9
     end
+
+    it 'should throw an exception for consecutive delimiters' do
+      lambda {
+        Calculator.new("1,\n2").add
+      }.should raise_exception
+      lambda {
+        Calculator.new("1\n,2").add
+      }.should raise_exception
+    end
   end
 end
