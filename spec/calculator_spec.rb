@@ -35,5 +35,10 @@ describe Calculator do
     it 'should return the sum for an expr with two numbers' do
       Calculator.new('12,34').add.should == 46
     end
+
+    it 'should return the sum for an arbitrary number of numbers' do
+      Calculator.new('1,2,3').add.should == 6
+      Calculator.new('1,2,5,8').add.should == 16
+    end
   end
 end
