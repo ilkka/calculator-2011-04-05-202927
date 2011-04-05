@@ -54,5 +54,11 @@ describe Calculator do
         Calculator.new("1\n,2").add
       }.should raise_exception
     end
+
+    it 'should throw an exception for negative numbers' do
+      lambda {
+        Calculator.new('-1').add
+      }.should raise_exception(IllFormedExpressionError, "negatives not allowed")
+    end
   end
 end
