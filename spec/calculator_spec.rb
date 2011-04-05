@@ -75,4 +75,10 @@ describe Calculator do
       }
     end
   end
+
+  describe 'diff' do
+    it 'should return the difference of two numbers' do
+      Calculator.new('1,0').diff.should == 1
+    end
+  end
 end
