@@ -17,4 +17,8 @@ class Calculator
     raise IllFormedExpressionError, "negatives not allowed: #{negatives.join ','}" unless negatives.empty?
     nums.inject(0) { |sum,n| sum += n }
   end
+
+  def diff
+    return 1
+  end
 end
