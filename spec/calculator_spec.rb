@@ -84,6 +84,10 @@ describe Calculator do
         Calculator.new("1;2").add
       }.should raise_exception
     end
+
+    it 'should accept multiple custom delims' do
+      Calculator.new("//[*][;]\n1*2;3").add.should == 6
+    end
   end
 
   describe 'diff' do
@@ -135,6 +139,10 @@ describe Calculator do
       lambda {
         Calculator.new("1;2").diff
       }.should raise_exception
+    end
+
+    it 'should accept multiple custom delims' do
+      Calculator.new("//[*][;][#]\n5*4;3#2").diff.should == -4
     end
   end
 end
