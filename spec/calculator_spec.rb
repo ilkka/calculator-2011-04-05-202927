@@ -31,5 +31,9 @@ describe Calculator do
     it 'should return the number in the string for a single number' do
       Calculator.new('42').add.should == 42
     end
+
+    it 'should return the sum for an expr with two numbers' do
+      Calculator.new('12,34').add.should == 46
+    end
   end
 end
