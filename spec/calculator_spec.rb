@@ -43,6 +43,7 @@ describe Calculator do
 
     it 'should accept newlines for delimiters' do
       Calculator.new("1\n2\n3").add.should == 6
+      Calculator.new("2,3\n4").add.should == 9
     end
   end
 end
