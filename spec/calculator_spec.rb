@@ -82,5 +82,14 @@ describe Calculator do
       Calculator.new('3,2,1').diff.should == 0
       Calculator.new("5,4\n3,2\n1").diff.should == -5
     end
+
+    it 'should throw an exception for fewer than 2 numbers' do
+      lambda {
+        Calculator.new('5').diff
+      }.should raise_exception
+      lambda {
+        Calculator.new('').diff
+      }.should raise_exception
+    end
   end
 end
