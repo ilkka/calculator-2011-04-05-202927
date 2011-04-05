@@ -24,16 +24,18 @@ class Calculator
     /[,\n]/
   end
 
-  def expr_to_numbers
+  def split_off_custom_delims
     (first,rest) = @expr.split("\n", 2)
     if first =~ /^\/\/\[(.)\]$/
-      delims = %r{[#{Regexp.last_match(1)}\n]}
-      str = rest
+      [rest, %r{[#{Regexp.last_match(1)}\n]}]
     else
-      delims = default_delims
-      str = [first, rest].select { |s| s.class == String }.join "\n"
+      [[first, rest].select { |s| s.class == String }.join("\n"), default_delims]
     end
-    nums = str.split(delims).map { |part|
+  end
+
+  def expr_to_numbers
+    (expr,delims) = split_off_custom_delims
+    nums = expr.split(delims).map { |part|
       raise IllFormedExpressionError, 'multiple consecutive delimiters not allowed' if part.empty?
       part.to_i
     }
