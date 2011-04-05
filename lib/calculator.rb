@@ -9,10 +9,12 @@ class Calculator
   end
 
   def add
-    @expr.split(/[,\n]/).inject(0) do |sum,part|
+    nums = @expr.split(/[,\n]/).map { |part|
       raise IllFormedExpressionError, 'multiple consecutive delimiters not allowed' if part.empty?
-      raise IllFormedExpressionError, "negatives not allowed: #{part.chomp}" if part.chomp[0] == '-'
-      sum += part.to_i
-    end
+      part.to_i
+    }
+    negatives = nums.select {|n| n < 0}
+    raise IllFormedExpressionError, "negatives not allowed: #{negatives.join ','}" unless negatives.empty?
+    nums.inject(0) { |sum,n| sum += n }
   end
 end
