@@ -14,6 +14,7 @@ class Calculator
 
   def diff
     nums = expr_to_numbers
+    raise IllFormedExceptionError, 'diff needs at least two numbers' if nums.length < 2
     nums[1..-1].inject(nums[0]) { |sum,n| sum -= n }
   end
 
