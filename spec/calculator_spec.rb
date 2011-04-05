@@ -22,4 +22,10 @@ describe Calculator do
       c.expr.should == '1,2'
     end
   end
+
+  describe 'add' do
+    it 'should return zero for an empty string' do
+      Calculator.new('').add.should == 0
+    end
+  end
 end
