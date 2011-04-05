@@ -79,6 +79,7 @@ describe Calculator do
   describe 'diff' do
     it 'should return the difference of two numbers' do
       Calculator.new('1,0').diff.should == 1
+      Calculator.new('3,2,1').diff.should == 0
     end
   end
 end
