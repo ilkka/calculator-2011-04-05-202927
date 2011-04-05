@@ -78,6 +78,12 @@ describe Calculator do
     it 'should accept custom delimiters on the first line' do
       Calculator.new("//[;]\n1;2").add.should == 3
     end
+
+    it 'should not accept delimiters except commas and newlines by default' do
+      lambda {
+        Calculator.new("1;2")
+      }.should raise_exception
+    end
   end
 
   describe 'diff' do
